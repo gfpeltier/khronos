@@ -1,0 +1,44 @@
+{% extends "khronos/base.html" %}
+
+{% block content %}
+<section class="task-entry">
+    <h3>Create a new task</h3>
+    <form method="POST" action="new-task/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" rows="7" id="desc" name="desc"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category">
+                {% for tn, tv in category_opts %}
+                <option value="{{ tn }}">{{ tv }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <select class="form-control" id="priority" name="priority">
+                {% for tn, tv in priority_opts %}
+                <option value="{{ tn }}">{{ tv }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="due">Due Date</label>
+            <input type="text" class="form-control" id="due" name="due">
+        </div>
+        <div class="form-group">
+            <label for="testimate">Time Estimate</label>
+            <input type="text" class="form-control" id="testimate" name="testimate">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</section>
+<a role="button" href="dashboard" class="btn btn-primary">Back to Dashboard</a>
+{% endblock %}

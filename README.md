@@ -1,4 +1,4 @@
-# Kronos
+# Khronos
 *A self-hosted Django-based day planner*
 
 **IMPORTANT: Project in development and is unstable.**

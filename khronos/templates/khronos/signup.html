@@ -1,0 +1,51 @@
+{% extends "khronos/base.html" %}
+
+{% block content %}
+<div class="login">
+    <h3>Sign Up</h3>
+    {{ form.non_field_errors }}
+    <form method="POST" action="/signup/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="usrname">Username</label>
+            <input type="text" class="form-control" id="usrname" name="username">
+        </div>
+        {% if form.username.errors %}
+            {% for err in form.username.errors %}
+            <div class="form-error">{{ err|escape }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        {% if form.email.errors %}
+            {% for err in form.email.errors %}
+            <div class="form-error">{{ err|escape }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="first_name">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="last_name">
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" name="password1">
+        </div>
+        {% if form.password2.errors %}
+            {% for err in form.password2.errors %}
+            <div class="form-error">{{ err|escape }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="form-group">
+            <label for="pass2">Re-enter Password</label>
+            <input type="password" class="form-control" id="pass2" name="password2">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

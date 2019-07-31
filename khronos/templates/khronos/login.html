@@ -1,0 +1,19 @@
+{% extends "khronos/base.html" %}
+
+{% block content %}
+<div class="login">
+    <h3>Login</h3>
+    <form method="POST" action="/login/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
