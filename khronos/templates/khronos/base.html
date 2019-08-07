@@ -8,8 +8,29 @@
     <title>Khronos</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Khronos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarItems" aria-controls="navbarItems" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarItems">
+        <ul class="navbar-nav mr-auto"></ul>
+
+        <span class="navbar-text">
+            {% if request.user.is_authenticated %}
+            Hi, <a href="/users/{{ request.user.username }}">{{ request.user.first_name }}</a>
+            /
+            <a href="/signout">Signout</a>
+            {% else %}
+            <a href="/login">Login</a>
+            /
+            <a href="/signup">Signup</a>
+            {% endif %}
+        </span>
+    </div>
+</nav>
 <div class="container">
-    <h1>Khronos</h1>
     {% block content %}
     {% endblock %}
 </div>

@@ -1,17 +1,18 @@
 {% extends "khronos/base.html" %}
 
 {% block content %}
-<div>
+<div class="dash-content">
 {% if tasks is not None %}
     {% for task in tasks %}
-    <div class="task-summary">
+    <a href="/planner/tasks/{{ task.id }}"><div class="task-summary">
         <h3>{{ task.title }}</h3>
-    </div>
+        <p>{{ task.description }}</p>
+    </div></a>
     {% endfor %}
 {% else %}
-    <h4>No Tasks Assigned to Current User</h4>
+    <h4>No Tasks Assigned to You, {{ user.first_name }}</h4>
 {% endif %}
 
 </div>
-<a href="new_task" role="button" class="btn btn-primary">Create Task</a>
+<a href="/planner/new_task" role="button" class="btn btn-primary">Create Task</a>
 {% endblock %}

@@ -1,13 +1,20 @@
 from django import forms
 from django.forms import ModelForm
+
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth.models import User
 
 
 class UserCreationForm(ModelForm):
     """Form that creates a generic user with no privileges from given username
-    and password
+    and password. First name, last name, and email are also required
     """
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
