@@ -1,2 +1,2 @@
-Django==2.2.3
+Django==2.2.4
 uwsgi>=2.0,<2.1
